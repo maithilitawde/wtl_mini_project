@@ -12,7 +12,7 @@ export default function Footer() {
                             <a href="/aboutus">
                                 {" "}
                                 <li className="my-2 p-1   border-white text-center md:text-xl text-base font-normal text-white ">
-                                    About US
+                                    About Us
                                 </li>
                             </a>
                             <a href="/">
