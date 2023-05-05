@@ -12,6 +12,7 @@ export default function Login() {
         const { name, value } = event.target;
         if (name === 'email') setEmail(value);
         if (name === 'password') setPassword(value);
+        console.log();
     };
     
     

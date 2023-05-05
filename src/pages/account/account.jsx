@@ -15,9 +15,11 @@ export default function BankAccountForm() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+       
         switch (name) {
             case 'firstName':
                 setFirstName(value);
+                console.log();
                 break;
             case 'lastName':
                 setLastName(value);
@@ -43,13 +45,16 @@ export default function BankAccountForm() {
             default:
                 break;
         }
+       
     }
 
     const handleFileInputChange = (e) => {
         setAadharCardFile(e.target.files[0]);
+        console.log();
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log();
         // Code to submit the form data to the server goes here
     }
 
@@ -129,22 +134,36 @@ export default function BankAccountForm() {
                                 Account Type:
 
                             </label>
-                            <select value={accountType} onChange={handleInputChange} className="p-2 block w-full m-2 rounded-md shadow-sm ">
-                                <option value="checking">Checking</option>
-                                <option value="savings">Savings</option>
-                                <option value="credit">Credit</option>
-                            </select>
+                            <div>
+                            <div className="flex items-center">
+                                <input type="radio" name="accountType" value="Checking" checked={accountType === 'Checking'} onChange={handleInputChange} className='rounded-md m-2' />
+                                <span className="ml-2">Checking</span>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="radio" name="accountType" value="Saving" checked={accountType === "Saving"} onChange={handleInputChange} className='rounded-md m-2' />
+                                <span className="ml-2">Saving</span>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="radio" name="accountType" value="Current" checked={accountType === "Current"} onChange={handleInputChange} className='rounded-md m-2' />
+                                <span className="ml-2">Current</span>
+                            </div>
+                            </div>
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold block '>
                                 Account Category:
 
                             </label>
-                            <select value={accountCategory} onChange={handleInputChange} className=" p-2 block w-full m-2 rounded-md shadow-sm">
-                                <option value="personal">Personal</option>
-                                <option value="business">Business</option>
-                                <option value="joint">Joint</option>
-                            </select>
+                            <div>
+                            <div className="flex items-center">
+                                <input type="radio" name="accountCategory" value="Individual" checked={accountCategory === 'Indiviual'} onChange={handleInputChange} className='rounded-md m-2' />
+                                <span className="ml-2">Individual</span>
+                            </div>
+                            <div className="flex items-center">
+                                <input type="radio" name="accountCategory" value="Joint" checked={accountCategory === "Joint"} onChange={handleInputChange} className='rounded-md m-2' />
+                                <span className="ml-2"> Joint</span>
+                            </div>
+                            </div>
                         </div>
                         <div className='m-6'>
                             <button type="submit" className="bg-blue-950 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600">Open Account</button>
