@@ -3,58 +3,54 @@ import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 
 export default function BankAccountForm() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [address, setAddress] = useState('');
-    const [educationLevel, setEducationLevel] = useState('');
-    const [aadharCardFile, setAadharCardFile] = useState(null);
-    const [accountType, setAccountType] = useState('');
-    const [accountCategory, setAccountCategory] = useState('');
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-       
-        switch (name) {
-            case 'firstName':
-                setFirstName(value);
-                console.log();
-                break;
-            case 'lastName':
-                setLastName(value);
-                break;
-            case 'email':
-                setEmail(value);
-                break;
-            case 'phone':
-                setPhone(value);
-                break;
-            case 'address':
-                setAddress(value);
-                break;
-            case 'educationLevel':
-                setEducationLevel(value);
-                break;
-            case 'accountType':
-                setAccountType(value);
-                break;
-            case 'accountCategory':
-                setAccountCategory(value);
-                break;
-            default:
-                break;
+    const [accountInfo, setaccountInfo] = useState(
+        {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            address: '',
+            educationLevel: '',
+            accountType: '',
+            accountCategory: ''
+
+
         }
-       
+    );
+
+    const [aadharCardFile, setAadharCardFile] = useState(null);
+
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setaccountInfo((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+
     }
 
-    const handleFileInputChange = (e) => {
-        setAadharCardFile(e.target.files[0]);
+    const handleFileInputChange = (event) => {
+        setAadharCardFile(event.target.files[0]);
         console.log();
     };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setaccountInfo(
+            {
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                address: '',
+                educationLevel: '',
+                accountType: '',
+                accountCategory: ''
+
+            }
+        );
+        console.log(accountInfo);
         // Code to submit the form data to the server goes here
     }
 
@@ -74,35 +70,35 @@ export default function BankAccountForm() {
                             <label className='m-2 font-semibold block '>
                                 First Name:
                             </label>
-                            <input type="text" name="firstName" value={firstName} onChange={handleInputChange} className='rounded-md m-2 block w-full p-2 ' />
+                            <input className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="firstName" id="firstName" placeholder="John" value={accountInfo.firstName} onChange={handleInputChange} />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold block '>
                                 Last Name:
 
                             </label>
-                            <input type="text" name="lastName" value={lastName} onChange={handleInputChange} className='rounded-md m-2 block w-full p-2' />
+                            <input className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="lastName" id="lastName" placeholder="Doe" value={accountInfo.lastName} onChange={handleInputChange} />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold  block  '>
                                 Email:
 
                             </label>
-                            <input type="email" name="email" value={email} onChange={handleInputChange} className='  p-2 rounded-md m-2 block w-full' />
+                            <input className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="email" id="email" placeholder="abc@xyz.com" value={accountInfo.email} onChange={handleInputChange} />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold  block '>
                                 Phone:
 
                             </label>
-                            <input type="tel" name="phone" value={phone} onChange={handleInputChange} className='  p-2 rounded-md m-2 block w-full' />
+                            <input className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="phone" id="phone" placeholder="1234567890" value={accountInfo.phone} onChange={handleInputChange} />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold  block  '>
                                 Address:
 
                             </label>
-                            <input type="text" name="address" value={address} onChange={handleInputChange} className='  p-2 rounded-md m-2 block w-full' />
+                            <input className="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="address" id="address" placeholder="address" value={accountInfo.address} onChange={handleInputChange} />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold  block  '>
@@ -110,15 +106,36 @@ export default function BankAccountForm() {
 
                             </label>
                             <div className="flex items-center">
-                                <input type="radio" name="educationLevel" value="High School" checked={educationLevel === 'High School'} onChange={handleInputChange} className='rounded-md m-2' />
+                                <input
+                                    className="mr-2"
+                                    type="radio"
+                                    name="educationLevel"
+                                    value="High School"
+                                    checked={accountInfo.educationLevel === 'High School'}
+                                    onChange={handleInputChange}
+                                />
                                 <span className="ml-2">High School</span>
                             </div>
                             <div className="flex items-center">
-                                <input type="radio" name="educationLevel" value="Bachelor's Degree" checked={educationLevel === "Bachelor's Degree"} onChange={handleInputChange} className='rounded-md m-2' />
+                                <input
+                                    className="mr-2"
+                                    type="radio"
+                                    name="educationLevel"
+                                    value="Bachelors Degree"
+                                    checked={accountInfo.educationLevel === 'Bachelors Degree'}
+                                    onChange={handleInputChange}
+                                />
                                 <span className="ml-2">Bachelors Degree</span>
                             </div>
                             <div className="flex items-center">
-                                <input type="radio" name="educationLevel" value="Master's Degree" checked={educationLevel === "Master's Degree"} onChange={handleInputChange} className='rounded-md m-2' />
+                                <input
+                                    className="mr-2"
+                                    type="radio"
+                                    name="educationLevel"
+                                    value="Masters Degree"
+                                    checked={accountInfo.educationLevel === 'Masters Degree'}
+                                    onChange={handleInputChange}
+                                />
                                 <span className="ml-2">Masters Degree</span>
                             </div>
                         </div>
@@ -127,7 +144,7 @@ export default function BankAccountForm() {
                                 Aadhar Card:
 
                             </label>
-                            <input type="file" onChange={handleFileInputChange} className=' p-2 rounded-md m-2 block w-full' />
+                            <input type="file" name={aadharCardFile} onChange={handleFileInputChange} className=' p-2 rounded-md m-2 block w-full' />
                         </div>
                         <div className='m-4'>
                             <label className='m-2 font-semibold block '>
@@ -135,18 +152,39 @@ export default function BankAccountForm() {
 
                             </label>
                             <div>
-                            <div className="flex items-center">
-                                <input type="radio" name="accountType" value="Checking" checked={accountType === 'Checking'} onChange={handleInputChange} className='rounded-md m-2' />
-                                <span className="ml-2">Checking</span>
-                            </div>
-                            <div className="flex items-center">
-                                <input type="radio" name="accountType" value="Saving" checked={accountType === "Saving"} onChange={handleInputChange} className='rounded-md m-2' />
-                                <span className="ml-2">Saving</span>
-                            </div>
-                            <div className="flex items-center">
-                                <input type="radio" name="accountType" value="Current" checked={accountType === "Current"} onChange={handleInputChange} className='rounded-md m-2' />
-                                <span className="ml-2">Current</span>
-                            </div>
+                                <div className="flex items-center">
+                                    <input
+                                        className="mr-2"
+                                        type="radio"
+                                        name="accountType"
+                                        value="Checking"
+                                        checked={accountInfo.accountType === 'Checking'}
+                                        onChange={handleInputChange}
+                                    />
+                                    <span className="ml-2">Checking</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <input
+                                        className="mr-2"
+                                        type="radio"
+                                        name="accountType"
+                                        value="Saving"
+                                        checked={accountInfo.accountType === 'Saving'}
+                                        onChange={handleInputChange}
+                                    />
+                                    <span className="ml-2">Saving</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <input
+                                        className="mr-2"
+                                        type="radio"
+                                        name="accountType"
+                                        value="Current"
+                                        checked={accountInfo.accountType === 'Current'}
+                                        onChange={handleInputChange}
+                                    />
+                                    <span className="ml-2">Current</span>
+                                </div>
                             </div>
                         </div>
                         <div className='m-4'>
@@ -155,14 +193,28 @@ export default function BankAccountForm() {
 
                             </label>
                             <div>
-                            <div className="flex items-center">
-                                <input type="radio" name="accountCategory" value="Individual" checked={accountCategory === 'Indiviual'} onChange={handleInputChange} className='rounded-md m-2' />
-                                <span className="ml-2">Individual</span>
-                            </div>
-                            <div className="flex items-center">
-                                <input type="radio" name="accountCategory" value="Joint" checked={accountCategory === "Joint"} onChange={handleInputChange} className='rounded-md m-2' />
-                                <span className="ml-2"> Joint</span>
-                            </div>
+                                <div className="flex items-center">
+                                    <input
+                                        className="mr-2"
+                                        type="radio"
+                                        name="accountCategory"
+                                        value="Individual"
+                                        checked={accountInfo.accountCategory === 'Individual'}
+                                        onChange={handleInputChange}
+                                    />
+                                    <span className="ml-2">Individual</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <input
+                                        className="mr-2"
+                                        type="radio"
+                                        name="accountCategory"
+                                        value="Joint"
+                                        checked={accountInfo.accountCategory === 'Joint'}
+                                        onChange={handleInputChange}
+                                    />
+                                    <span className="ml-2"> Joint</span>
+                                </div>
                             </div>
                         </div>
                         <div className='m-6'>

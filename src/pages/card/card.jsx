@@ -26,6 +26,19 @@ export default function CardForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setCardInfo(
+            {
+                cardHolderName: '',
+                cardType: '',
+                expiryMonth: '',
+                expiryYear: '',
+                cardvariant: '',
+                address: '',
+                phone: '',
+                email: '',
+
+            }
+        );
         console.log(cardInfo);
     };
 
@@ -83,9 +96,9 @@ export default function CardForm() {
                             <input
                                 className="mr-2"
                                 type="radio"
-                                name="cardType"
+                                name="cardvariant"
                                 value="New"
-                                checked={cardInfo.cardType === 'New'}
+                                checked={cardInfo.cardvariant === 'New'}
                                 onChange={handleInputChange}
                             />
                             New
@@ -94,9 +107,9 @@ export default function CardForm() {
                             <input
                                 className="mr-2"
                                 type="radio"
-                                name="cardType"
+                                name="cardvariant"
                                 value="Domestic"
-                                checked={cardInfo.cardType === 'Domestic'}
+                                checked={cardInfo.cardvariant === 'Domestic'}
                                 onChange={handleInputChange}
                             />
                             Domestic
@@ -105,9 +118,9 @@ export default function CardForm() {
                             <input
                                 className=" ml-2  mr-2"
                                 type="radio"
-                                name="cardType"
+                                name="cardvariant"
                                 value="International"
-                                checked={cardInfo.cardType === 'International'}
+                                checked={cardInfo.cardvariant === 'International'}
                                 onChange={handleInputChange}
                             />
                             International
