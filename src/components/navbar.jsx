@@ -19,7 +19,7 @@ export default function Navbar() {
                                 </a>
                         </div>
                         <div className="mx-2 my-1">
-                               <a href="/netbanking">
+                               <a href="/transaction">
                                    <h1 className="text-white font-semibold text-xl">Netbanking</h1>
                                </a>
                         </div>

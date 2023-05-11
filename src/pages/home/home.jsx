@@ -36,13 +36,13 @@ export default function Home() {
                             </button>
                         </a>
                     </div>
-                    <div className="my-4 mb-20 ">
+                    {/* <div className="my-4 mb-20 ">
                         <a href="/aboutus">
                             <button className="bg-white text-black text-sm font-semibold p-2 rounded-md  hover:bg-blue-950 hover:text-white w-[100%]">
                                 Find a local branch
                             </button>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="bg-white">
